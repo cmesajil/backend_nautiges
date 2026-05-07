@@ -27,9 +27,9 @@ public class AuthService {
     //se tiene una cuenta existente y se desea loguerse
     public AuthResponseDTO login(LoginRequestDTO request) {
         var usuario = usuarioRepository
-            .findByEmail(request.getEmail())
+            .findByUsername(request.getUsername())
             .orElseThrow(() ->
-                new UsernameNotFoundException("Email no encontrado")
+                new UsernameNotFoundException("Usuario no encontrado")
             );
 
         if (
