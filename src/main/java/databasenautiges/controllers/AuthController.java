@@ -2,6 +2,7 @@ package databasenautiges.controllers;
 
 import databasenautiges.dto.AuthResponseDTO;
 import databasenautiges.dto.LoginRequestDTO;
+import databasenautiges.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +11,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
 
+    private final AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDTO request) {
         System.out.println(request.getUsername());
         System.out.println(request.getPassword());
 
-        String token = "mi-token-falso";
-
-        return ResponseEntity.ok(new AuthResponseDTO(token));
+        return ResponseEntity.ok(authService.login(request));
     }
 }

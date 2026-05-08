@@ -22,7 +22,11 @@ public class SolicitudInscripcion {
     private Persona persona;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "clasificacion_externa", nullable = false)
+    @Column(
+        name = "clasificacion_externa",
+        columnDefinition = "tipo_socio",
+        nullable = false
+    )
     private TipoSocio clasificacionExterna;
 
     @Enumerated(EnumType.STRING)

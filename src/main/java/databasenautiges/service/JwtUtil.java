@@ -25,12 +25,12 @@ public class JwtUtil {
     public String generateToken(Usuario usuario) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("personaId", usuario.getPersona().getId());
-        claims.put("email", usuario.getPersona().getCorreo());
+        claims.put("email", usuario.getUsername());
         claims.put("names", usuario.getPersona().getNombres());
 
         return Jwts.builder()
             .claims(claims)
-            .subject(usuario.getPersona().getCorreo())
+            .subject(usuario.getUsername())
             .issuedAt(new Date(System.currentTimeMillis()))
             .expiration(new Date(System.currentTimeMillis() + jwtExpiration))
             .signWith(getSigningKey())
