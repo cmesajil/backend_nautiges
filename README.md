@@ -188,6 +188,18 @@ CREATE TABLE cuotas_comprobante (
     fecha_vencimiento DATE NOT NULL,
     estado_pago estado_pago DEFAULT 'PENDIENTE'
 );
+-- =============================================================================
+-- 6. MÓDULO: SEGURIDAD Y ACCESO
+-- =============================================================================
+
+CREATE TABLE usuarios (
+    usuario_id SERIAL PRIMARY KEY,
+    persona_id INTEGER NOT NULL UNIQUE REFERENCES personas(persona_id),
+    username VARCHAR(50) UNIQUE NOT NULL, -- El correo o un nickname
+    password VARCHAR(255) NOT NULL,       -- Aquí irá el Hash de BCrypt
+    activo BOOLEAN DEFAULT TRUE,
+    role VARCHAR(20) DEFAULT 'ROLE_SOCIO' -- Para distinguir entre SOCIO, ADMIN, etc.
+);
 ```
 
 ---
@@ -443,4 +455,3 @@ decimal total
 
 }
 ```
-
