@@ -1,6 +1,5 @@
 package databasenautiges.dto;
 
-import databasenautiges.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,8 +7,8 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-public class AuthResponseDTO {
+public class UserDTO {
 
-    private String token;
-    private UserDTO user;
+    private String email;
+    private String role;
 }

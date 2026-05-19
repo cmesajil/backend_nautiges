@@ -2,6 +2,7 @@ package databasenautiges.service;
 
 import databasenautiges.dto.AuthResponseDTO;
 import databasenautiges.dto.LoginRequestDTO;
+import databasenautiges.dto.UserDTO;
 import databasenautiges.model.Persona;
 import databasenautiges.model.Socio;
 import databasenautiges.model.Usuario;
@@ -40,6 +41,14 @@ public class AuthService {
         ) throw new BadCredentialsException("Contraseña incorrecta");
 
         var token = jwtService.generateToken(usuario);
-        return AuthResponseDTO.builder().token(token).build();
+        return AuthResponseDTO.builder()
+            .token(token)
+            .user(
+                UserDTO.builder()
+                    .email(usuario.getPersona().getCorreo())
+                    .role(usuario.getRole().name())
+                    .build()
+            )
+            .build();
     }
 }
