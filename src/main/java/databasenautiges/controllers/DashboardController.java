@@ -1,4 +1,4 @@
-package databasenautiges.controller;
+package databasenautiges.controllers;
 
 import databasenautiges.dto.DashboardResumenDTO;
 import databasenautiges.service.DashboardService;
