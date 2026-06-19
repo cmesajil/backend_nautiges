@@ -20,4 +20,14 @@ public class DashboardController {
     public DashboardResumenDTO obtenerResumen() {
         return dashboardService.obtenerResumen();
     }
+
+    @GetMapping("/socios-estado")
+    public java.util.List<java.util.Map<String, Object>> getSociosPorEstado() {
+        return dashboardService.getSociosPorEstado();
+    }
+
+    @GetMapping("/ingresos-mes")
+    public java.util.List<java.util.Map<String, Object>> getIngresosPorMes() {
+        return dashboardService.getIngresosPorMes();
+    }
 }
